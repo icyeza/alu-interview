@@ -1,17 +1,16 @@
-
 #!/usr/bin/python3
 """Minimum Operations"""
 
 
 def minOperations(n):
-    """Calculation  of operations needed to obtain exactly n H characters
+    
 
-    Args:
-        n (int): The target number of H characters.
+    
+       
 
-    Returns:
-        int: The minimum number of operations required.
-    """
+    
+        
+   
 
     if n <= 1:
         return 0
