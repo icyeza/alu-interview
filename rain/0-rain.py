@@ -23,4 +23,8 @@ def rain(walls):
     for i in range(n):
         water_retained += min(left_max[i], right_max[i]) - walls[i]
 
+<<<<<<< HEAD
     return water_retained
+=======
+    return water_retained
+>>>>>>> 6b90c44072aafc6cf52dc09d9fd8772bd263829a
