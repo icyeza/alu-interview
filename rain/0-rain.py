@@ -1,30 +1,32 @@
 #!/usr/bin/python3
 """
-Function that calculates how much water will be retained after it rains
+Prototype: def rain(walls)
+walls is a list of non-negative integers.
+Return: Integer indicating total amount of rainwater retained.
+Assume that the ends of the list (before index 0 and after index walls[-1]) are
+not walls, meaning they will not retain water.
+If the list is empty return 0.
 """
 
 
 def rain(walls):
-    if not walls:
+    if len(walls) < 3:
         return 0
-    n = len(walls)
-    left_max = [0] * n
-    right_max = [0] * n
 
-    left_max[0] = walls[0]
-    for i in range(1, n):
-        left_max[i] = max(left_max[i-1], walls[i])
+    total_water = 0
+    left = 0
+    right = len(walls) - 1
+    left_max = walls[left]
+    right_max = walls[right]
 
-    right_max[n-1] = walls[n-1]
-    for i in range(n-2, -1, -1):
-        right_max[i] = max(right_max[i+1], walls[i])
+    while left < right:
+        if walls[left] <= walls[right]:
+            left_max = max(left_max, walls[left])
+            total_water += left_max - walls[left]
+            left += 1
+        else:
+            right_max = max(right_max, walls[right])
+            total_water += right_max - walls[right]
+            right -= 1
 
-    water_retained = 0
-    for i in range(n):
-        water_retained += min(left_max[i], right_max[i]) - walls[i]
-
-<<<<<<< HEAD
-    return water_retained
-=======
-    return water_retained
->>>>>>> 6b90c44072aafc6cf52dc09d9fd8772bd263829a
+    return total_water
